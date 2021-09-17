@@ -4,6 +4,7 @@ import {
   loadTodosFailure,
   createTodo,
   removeTodo,
+  markTodoAsCompleted,
 } from "./actions";
 
 export const loadTodos = () => async (dispatch, getState) => {
@@ -42,6 +43,18 @@ export const removeTodoRequest = (id) => async (dispatch) => {
     });
     const removedTodo = await response.json();
     dispatch(removeTodo(removedTodo));
+  } catch (error) {
+    dispatch(dispalyAlert(error));
+  }
+};
+
+export const markTodoAsCompletedRequest = (id) => async (dispatch) => {
+  try {
+    const response = await fetch(`http://localhost:8000/todos/${id}`, {
+      method: "PUT",
+    });
+    const updatedTodo = await response.json();
+    dispatch(markTodoAsCompleted(updatedTodo));
   } catch (error) {
     dispatch(dispalyAlert(error));
   }
