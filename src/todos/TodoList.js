@@ -39,7 +39,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  startLoadingTodos: () => dispatch(loadTodos),
+  startLoadingTodos: () => dispatch(loadTodos()),
   onRemovedPressed: (text) => dispatch(removeTodo(text)),
   onCompletedPressed: (text) => dispatch(markTodoAsCompleted(text)),
 });
