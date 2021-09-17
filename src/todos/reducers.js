@@ -2,9 +2,7 @@ import {
   CREATE_TODO,
   REMOVE_TODO,
   MARK_TODO_AS_COMPLETED,
-  loadTodosInProgress,
-  loadsTodosSuccess,
-  loadTodosFailure,
+  LOAD_TODOS_FAILURE,
   LOAD_TODOS_IN_PROGRESS,
   LOAD_TODOS_SUCCESS,
 } from "./actions";
@@ -16,7 +14,7 @@ export const isLoading = (state = false, action) => {
     case LOAD_TODOS_IN_PROGRESS:
       return true;
     case LOAD_TODOS_SUCCESS:
-    case loadTodosFailure:
+    case LOAD_TODOS_FAILURE:
       return false;
     default:
       return state;
